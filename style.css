@@ -1,0 +1,664 @@
+/* =========================
+  IMPORT GOOGLE FONTS
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+/* =========================
+  RESET & BASE STYLES
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #000;
+}
+
+.container {
+    width: 1280px;
+    margin: auto;
+    z-index: 1;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
+  HEADER / NAVIGATION
+========================= */
+.main-head {
+    width: 100%;
+    height: 54px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #444444;
+    z-index: 9999;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+/* Sticky header on scroll */
+.main-head.slidedown {
+    position: fixed;
+    background: #fff;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: slidedown 0.3s forwards;
+}
+
+/* Slide down animation */
+@keyframes slidedown {
+    from { top: -250px; }
+    to { top: 0; }
+}
+
+/* Header content */
+.main-head .main-menu {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.main-head .main-menu .logo {
+    width: 30%;
+    margin-left: 50px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.main-head.slidedown .logo {
+    color: #000;
+}
+
+/* Nav Menu */
+.main-head .main-menu .nav-menu {
+    width: 70%;
+    padding-right: 30px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.nav-list-item {
+    list-style: none;
+     padding: 0 20px;   /* ✔ FIX */
+    height: auto;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #dac9bf;
+    transition: all 0.1s ease;
+}
+
+.main-head.slidedown .nav-link {
+    color: #000;
+}
+
+.nav-link:hover {
+    color: #7ea1ad;
+}
+
+/* =========================
+   TOGGLE BUTTONS (DESKTOP)
+========================= */
+
+/* Hide toggle buttons on desktop */
+.toggle-btns {
+    display: none;
+}
+
+/* =========================
+   TOGGLE BUTTONS
+========================= */
+
+/* Hide both icons by default (desktop + initial load) */
+.open-btn,
+.close-btn {
+    display: none;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+
+    .toggle-btns {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        z-index: 10000;
+    }
+    /* Move logo slightly right on mobile */
+    .main-head .logo {
+        margin-left: 20px;
+    }
+
+    /* Show ONLY hamburger on load */
+    .open-btn {
+        display: inline-block;
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+    }
+
+    /* Cross stays hidden until JS shows it */
+    .close-btn {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+    }
+}
+
+
+
+/* =========================
+   MOBILE MENU PANEL
+========================= */
+@media (max-width: 768px) {
+
+    /* Show only hamburger by default */
+    .open-btn {
+        display: inline;  /* hamburger visible on mobile */
+    }
+
+    .close-btn {
+        display: none;    /* cross hidden initially */
+    }
+
+    /* Nav panel styling */
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -250px; /* hidden initially */
+        width: 250px;
+        height: 30%;
+        background: #fff;
+        padding-top: 200px; /* hight of pannal after scrooling */
+        transition: right 0.3s ease;
+        z-index: 998;
+    }
+
+    /* Show nav panel when menu active */
+    .nav-list.show {
+        right: 0;
+    }
+
+    /* Nav items for mobile */
+    .nav-list-item {
+        margin: 0;
+        padding: 15px;
+    }
+
+    .nav-link {
+        color: #000;
+        font-size: 18px;
+    }
+
+    /* Cross button position */
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+    }
+}
+
+/* =========================
+  SHOWCASE / HERO BUTTON
+========================= */
+.showcase .content .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    background: transparent;
+    color: #fff;
+    padding: 11px 18px;
+    border: 2px solid #B53471;
+    border-radius: 5px;
+    transition: all 0.3s linear;
+}
+
+.showcase .content .btn:hover {
+    background: #B53471;
+}
+
+/* =========================
+ ===== HERO SECTION ===== 
+========================= */
+.hero {
+    background-image: url('Hero desktop.png');
+    background-size: cover;
+    background-position: center;
+    padding-left: 40px;
+    height: 90vh; /* desktop height */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+/* HERO CONTENT */
+.hero-content h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    margin-top: 40px;
+    color: #b92e2e;
+}
+
+.hero-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #B53471;
+}
+
+.hero-content .btn {
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.hero-content .btn.primary {
+    background-color: #B53471;
+    color: #fff;
+    border: none;
+}
+
+.hero-content .btn.primary:hover {
+    background-color: #a32c61;
+}
+
+.hero-content .btn.secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.hero-content .btn.secondary:hover {
+    background-color: #fff;
+    color: #B53471;
+}
+
+/* ===== MOBILE HERO ===== */
+@media (max-width: 768px) {
+    .hero {
+        background-image: url('hero_mobile.png');
+        height: 100vh; /* full mobile height */
+        padding: 0 0px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+        padding-right: 50px;
+        padding-top: 150px;
+        color: #B53471;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        color: #000;
+    }
+
+    .hero-content .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+        margin: 5px 0;
+        display: inline-block;
+        
+    }
+    .btn_secondary{
+        color: #B53471;
+        padding-left: 30px;
+    }
+}
+
+
+/* =========================
+ ===== Cards SECTION ===== 
+========================= */
+.card_heading{
+    margin-left: 40px;
+    margin-top: 20px;
+    height: 70px;
+    width: 150px;
+    color: #ffffff;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 40px;
+    background-color: #444444;
+}
+
+
+/* =========================
+   CARDS CONTAINER
+========================= */
+.inside {
+    position: absolute;
+    top: -70px;
+}
+
+.all_cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    width: 100%;
+    margin-bottom: 80px;
+    padding: 0;
+
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    
+}
+
+
+/* =========================
+   INDIVIDUAL CARD WRAPPER
+========================= */
+.wrapper {
+    width: 300px;
+    height: 500px;
+    
+    background: #fff;
+    margin: auto;
+
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.wrapper:hover {
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.container .top {
+    height: 80%;
+    width: 100%;
+    
+}
+
+/* watches */
+
+#image_pro1{
+    background: url(pro_1.PNG) no-repeat center center;
+    background-size: cover;
+}
+#image_pro2{
+    background: url(pro_2.PNG) no-repeat center center;
+    background-size: cover;
+}
+#image_pro3{
+    background: url(pro_3.PNG) no-repeat center center;
+    background-size: cover;
+}
+
+/* perfumes */
+
+
+#image_pro4{
+    background: url(pro_4.png) no-repeat center center;
+    background-size: cover;
+}
+#image_pro5{
+    background: url(pro_5.png) no-repeat center center;
+    background-size: cover;
+}
+#image_pro6{
+    background: url(pro_6.png) no-repeat center center;
+    background-size: cover;
+}
+
+
+/* =========================
+   CARD BOTTOM SECTION
+========================= */
+.bottom {
+    width: 200%;
+    height: 20%;
+    transition: transform 0.5s;
+}
+
+.bottom.clicked {
+    transform: translateX(-50%);
+}
+
+.bottom h1,
+.bottom p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   LEFT SIDE
+========================= */
+.bottom .left {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background: #f4f4f4;
+    position: relative;
+}
+
+.bottom .left .details {
+    padding: 20px;
+    float: left;
+    width: calc(70% - 40px);
+}
+
+.bottom .left .buy {
+    float: right;
+    width: calc(30% - 2px);
+    height: 100%;
+    background: #f1f1f1;
+
+    border-left: thin solid rgba(0,0,0,0.1);
+    transition: background 0.5s;
+}
+
+.bottom .left .buy i {
+    font-size: 30px;
+    padding: 30px;
+    color: #2caf37;
+    transition: transform 0.5s;
+}
+
+.bottom .left .buy:hover {
+    background: #bfebc3;
+}
+
+.bottom .left .buy:hover i {
+    transform: translateY(5px);
+}
+
+
+/* =========================
+   RIGHT SIDE
+========================= */
+.right {
+    width: 50%;
+    height: 200%;
+    float: right;
+    background: #2caf37;
+    color: #fff;
+    overflow: hidden;
+}
+
+.right .details {
+    padding: 20px;
+    float: right;
+    width: calc(70% - 40px);
+}
+
+.right .done,
+.right .remove {
+    width: calc(30% - 2px);
+    height: 50%;
+    float: left;
+    border-right: thin solid rgba(255,255,255,0.3);
+    transition: transform 0.5s;
+}
+
+.right .done i,
+.right .remove i {
+    font-size: 30px;
+    padding: 30px;
+    color: #fff;
+}
+
+.right .remove {
+    background: #BC3B59;
+    transition: transform 0.5s, background 0.5s;
+}
+
+.right .remove:hover {
+    background: #9B2847;
+}
+
+.right .remove:hover i {
+    transform: translateY(5px);
+}
+
+.right:hover .done,
+.right:hover .remove {
+    transform: translateY(-100%);
+}
+
+
+/* =========================
+   INSIDE OVERLAY
+========================= */
+.inside {
+    position: absolute;
+    top: -70px;
+    right: -70px;
+
+    width: 140px;
+    height: 140px;
+    background: #92879B;
+    border-radius: 0 0 200px 200px;
+
+    overflow: hidden;
+    z-index: 9;
+
+    transition: all 0.5s, border-radius 2s, top 1s;
+}
+
+.inside .icon {
+    position: absolute;
+    right: 85px;
+    top: 85px;
+    color: #fff;
+}
+
+
+/* Hover expand */
+.inside:hover {
+    width: 100%;
+    height: 80%;
+    right: 0;
+    top: 0;
+    border-radius: 0;
+}
+
+.inside:hover .icon {
+    opacity: 0;
+    right: 15px;
+    top: 15px;
+}
+
+
+/* =========================
+   INSIDE CONTENT
+========================= */
+.inside .contents {
+    padding: 5%;
+    opacity: 0;
+    transform: scale(0.5) translateY(-200%);
+    transition: opacity 0.2s, transform 0.8s;
+}
+
+.inside:hover .contents {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.inside .contents table {
+    width: 100%;
+    text-align: left;
+}
+
+.inside .contents h1,
+.inside .contents p,
+.inside .contents table {
+    color: #fff;
+}
+
+.inside .contents p {
+    font-size: 13px;
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+.fun {
+    padding-left: 30px;
+}
