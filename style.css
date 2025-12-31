@@ -378,6 +378,10 @@ html {
     top: -70px;
 }
 
+#product1{
+  width: 200px;
+}
+
 .all_cards {
     display: flex;
     flex-wrap: wrap;
@@ -662,3 +666,4 @@ html {
 .fun {
     padding-left: 30px;
 }
+
