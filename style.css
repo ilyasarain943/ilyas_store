@@ -360,7 +360,7 @@ html {
     margin-left: 40px;
     margin-top: 20px;
     height: 70px;
-    width: 150px;
+    width: 300px;
     color: #ffffff;
     align-content: center;
     justify-content: center;
@@ -666,4 +666,5 @@ html {
 .fun {
     padding-left: 30px;
 }
+
 
